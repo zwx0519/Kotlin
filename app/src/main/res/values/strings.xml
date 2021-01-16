@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">MyShop</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="bar_name_home">首页</string>
+    <string name="bar_name_topic">专题</string>
+    <string name="bar_name_sort">分类</string>
+    <string name="bar_name_shop">购物车</string>
+    <string name="bar_name_me">我的</string>
+
+    <string name="special_price_info">元起</string>
+    <string name="newgoods_price_info">￥</string>
+    <string name="type_info_name">分类</string>
+
+
+    <string name="title_newgoods_all">综合</string>
+    <string name="title_newgoods_price">价格</string>
+    <string name="title_nregoods_sort">分类</string>
+
+    <string name="title_car_specs">请选择规格数量</string>
+    <string name="title_car_assess">评价($)</string>
+    <string name="title_car_lookall">查看全部</string>
+    <string name="tips_error_goodid">错误的商品id</string>
+
+</resources>

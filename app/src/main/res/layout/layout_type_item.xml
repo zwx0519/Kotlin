@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vmtypeinfoList"
+            type="com.example.myshop.model.bean.shop.type.TypeInfoBean.SubCategory" />
+
+        <variable
+            name="vmtypeinfoListClick"
+            type="com.example.myshop.base.IItemClick" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/liner"
+        android:layout_width="@dimen/dp_120"
+        android:layout_height="@dimen/dp_200"
+        android:background="@color/cardview_light_background"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:onClick="@{(view)->vmtypeinfoListClick.itemClick(view.tag)}"
+        >
+
+        <ImageView
+            android:id="@+id/iv_type_info_img"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_100"
+
+            bind:imageUrl="@{vmtypeinfoList.wap_banner_url}"/>
+
+        <TextView
+            android:id="@+id/tv_type_info_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_8"
+            android:text="@{vmtypeinfoList.name}"
+            android:textSize="@dimen/sp_12" />
+    </LinearLayout>
+</layout>

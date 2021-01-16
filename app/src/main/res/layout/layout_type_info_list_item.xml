@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vmTypeInfoItem"
+            type="com.example.myshop.model.bean.shop.type.DataX" />
+        <variable
+            name="TypeInfoFragmentClick"
+            type="com.example.myshop.base.IItemClick" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="@dimen/dp_200"
+        android:layout_height="@dimen/dp_250"
+        android:onClick="@{(view)->TypeInfoFragmentClick.itemClick(view.tag)}"
+        >
+
+        <ImageView
+            android:id="@+id/iv_type_info_list_img"
+            android:layout_width="@dimen/dp_120"
+            android:layout_height="@dimen/dp_140"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp_10"
+            bind:imageUrl="@{vmTypeInfoItem.list_pic_url}"/>
+
+        <TextView
+            android:id="@+id/tv_type_info_list_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_type_info_list_img"
+            style="@style/Home_Text"
+            android:text="@{vmTypeInfoItem.name}" />
+
+        <TextView
+            android:id="@+id/tv_type_info_list_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_type_info_list_name"
+            android:textColor="#D50000"
+            style="@style/Home_Text"
+            android:text="@{@string/newgoods_price_info+vmTypeInfoItem.retail_price}"/>
+    </RelativeLayout>
+</layout>

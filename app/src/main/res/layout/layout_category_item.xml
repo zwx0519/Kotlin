@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vmCategory_item"
+            type="com.example.myshop.model.bean.shop.home.category.Goods" />
+
+        <variable
+            name="Category_itemClick"
+            type="com.example.myshop.base.IItemClick" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_176"
+        android:layout_margin="@dimen/dp_5">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_176"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:onClick="@{(view)->Category_itemClick.itemClick(view.tag)}"
+            >
+
+            <ImageView
+                android:id="@+id/iv_category_img"
+                android:layout_width="@dimen/dp_150"
+                android:layout_height="@dimen/dp_100"
+                bind:imageUrl="@{vmCategory_item.list_pic_url}"
+                />
+
+            <TextView
+                android:id="@+id/tv_category_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp_8"
+                android:text="@{vmCategory_item.name}"
+                style="@style/Home_Text" />
+
+            <TextView
+                android:id="@+id/tv_category_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{vmCategory_item.retail_price}"
+                android:textColor="#F44336"
+                style="@style/Home_Text" />
+        </LinearLayout>
+
+    </LinearLayout>
+</layout>

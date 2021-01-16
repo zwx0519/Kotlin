@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="vmNewgoodsList_popu"
+            type="com.example.myshop.model.bean.shop.home.newgoods.FilterCategory" />
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/stroke_black">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rlv_newgoods_popu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+</layout>

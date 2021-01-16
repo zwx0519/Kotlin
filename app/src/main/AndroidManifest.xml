@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.myshop">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name="com.shop.app.MyApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.shop.type.TypeInfoActivity"></activity>
+        <activity android:name=".ui.shop.home.category.CategoryActivity" />
+        <activity android:name=".test.more_view.More_ViewActivity" />
+        <activity android:name=".ui.shop.ShopActivity" />
+        <activity android:name=".ui.shop.home.newgoods.NewGoodsActivity" />
+        <activity android:name=".ui.shop.home.brand.BrandNameDetailActivity" />
+        <activity android:name=".ui.shop.home.brand.BrandNameActivity" />
+        <activity android:name=".ui.shop.home.brand.BrandActivity" />
+        <activity android:name=".ui.shop.home.channel.ChannelActivity" />
+        <activity android:name=".test.MyBindActivity" />
+        <activity android:name=".test.test.TestActivity" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

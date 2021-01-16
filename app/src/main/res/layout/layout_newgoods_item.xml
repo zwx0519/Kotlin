@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="vmNewGoodsList"
+            type="com.example.myshop.model.bean.shop.home.newgoods.GoodsList" />
+
+        <variable
+            name="vmNewGoodsListClick"
+            type="com.example.myshop.base.IItemClick" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:onClick="@{(view)->vmNewGoodsListClick.itemClick(view.tag)}">
+
+        <ImageView
+            android:id="@+id/iv_newgoods_img"
+            android:layout_width="@dimen/dp_200"
+            android:layout_height="@dimen/dp_150"
+            bind:imageUrl="@{vmNewGoodsList.list_pic_url}"
+            />
+
+        <TextView
+            android:id="@+id/tv_newgoods_name"
+            style="@style/Home_Text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{vmNewGoodsList.name}" />
+
+        <TextView
+            android:id="@+id/tv_newgoods_retail_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Home_Text"
+            android:textColor="#F44336"
+            android:text="@{@string/newgoods_price_info+vmNewGoodsList.retail_price}" />
+    </LinearLayout>
+</layout>
