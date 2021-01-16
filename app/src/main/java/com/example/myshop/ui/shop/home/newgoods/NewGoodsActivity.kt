@@ -210,9 +210,9 @@ class NewGoodsActivity(var lid: Int = R.layout.activity_new_goods) :
         //找到视图
         popupWindow!!.contentView = popupView
         popupWindow!!.isClippingEnabled = false
-//        //控制点击pw范围以外的空间关闭pw  设置Pw以外的空间可以点击
+        //控制点击pw范围以外的空间关闭pw  设置Pw以外的空间可以点击
         popupWindow!!.setOutsideTouchable(true)
-//        //设置背景  告知pw的范围
+        //设置背景  告知pw的范围
         popupWindow!!.setBackgroundDrawable(null)
         popupWindow!!.isFocusable = true
 

@@ -134,4 +134,7 @@ dependencies {
 
     //跑马灯
     implementation 'com.xj.marqueeView:marqueeView:0.1.20'
+
+    //图片缩放
+    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
 }

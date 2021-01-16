@@ -1,5 +1,6 @@
 package com.example.myshop.ui.shop.type
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.util.SparseArray
@@ -19,7 +20,9 @@ import com.example.myshop.base.IItemClick
 import com.example.myshop.databinding.FragmentTypeInfoListBinding
 import com.example.myshop.model.bean.shop.home.brand.ListData
 import com.example.myshop.model.bean.shop.type.DataX
+import com.example.myshop.ui.shop.home.category.CategoryActivity
 import com.example.myshop.viewmodel.shop.type.TypeInfoListViewModel
+import com.shop.utils.SpUtils
 
 class TypeInfoListFragment (var mid:Int,var mName:String,var mFront_name:String):
     BaseFragment<TypeInfoListViewModel, FragmentTypeInfoListBinding>(
@@ -56,7 +59,12 @@ class TypeInfoListFragment (var mid:Int,var mName:String,var mFront_name:String)
 
     inner class SortDataInfoClik: IItemClick<DataX> {
         override fun itemClick(data: DataX?) {
-            Log.e("TAG", "itemClick: "+data!!.name )
+            val intent = Intent(activity, CategoryActivity::class.java)
+            var id = data!!.id
+            Log.e("TAG","点击事件："+id)
+            SpUtils.instance!!.remove("Category_id")
+            SpUtils.instance!!.setValue("Category_id", id)
+            startActivity(intent)
         }
 
     }

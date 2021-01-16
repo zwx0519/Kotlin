@@ -1,11 +1,9 @@
 package com.example.myshop.ui.shop.home.brand
 
-import android.app.Application
 import android.util.Log
 import android.util.SparseArray
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.myshop.BR
 import com.example.myshop.R
@@ -13,8 +11,6 @@ import com.example.myshop.adapter.shop.home.brand.BrandNameDetailAdapter
 import com.example.myshop.base.IItemClick
 import com.example.myshop.databinding.ActivityBrandNameDetailBinding
 import com.example.myshop.model.bean.shop.home.brand.ListData
-import com.example.myshop.ui.shop.special.SpecialFragment
-import com.example.myshop.utils.MyMmkv
 import com.example.myshop.viewmodel.shop.home.brand.BrandNameDetailViewModel
 import com.shop.base.BaseActivity
 import com.shop.utils.SpUtils

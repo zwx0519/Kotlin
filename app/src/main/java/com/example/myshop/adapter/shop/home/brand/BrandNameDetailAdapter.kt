@@ -7,14 +7,14 @@ import com.example.myshop.BR
 import com.example.myshop.R
 import com.example.myshop.base.BaseAdapter
 import com.example.myshop.base.IItemClick
-import com.example.myshop.model.bean.shop.home.brand.Brand
-import com.example.myshop.model.bean.shop.home.brand.DataX
 import com.example.myshop.model.bean.shop.home.brand.ListData
+import com.example.myshop.model.bean.shop.home.category.CategoryBean
+import com.example.myshop.model.bean.shop.home.category.Goods
 
-class BrandNameDetailAdapter
-    (context: Context, list: List<ListData>,
-     layouts: SparseArray<Int>,
-     var click: IItemClick<ListData>)
+class BrandNameDetailAdapter(
+    context: Context, list: List<ListData>,
+    layouts: SparseArray<Int>,
+    var click: IItemClick<ListData>)
     : BaseAdapter<ListData>(context, list,layouts,click){
 
     override fun layoutId(position: Int): Int {

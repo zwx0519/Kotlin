@@ -9,6 +9,7 @@ import com.example.myshop.base.BaseAdapter
 import com.example.myshop.base.IItemClick
 import com.example.myshop.model.bean.shop.home.category.CategoryBean
 import com.example.myshop.model.bean.shop.home.newgoods.GoodsList
+import com.shop.utils.SpUtils
 
 class CategoryAttributeAdapter(
     context: Context,
@@ -28,4 +29,6 @@ class CategoryAttributeAdapter(
         list = lt
         notifyDataSetChanged()
     }
+
+
 }

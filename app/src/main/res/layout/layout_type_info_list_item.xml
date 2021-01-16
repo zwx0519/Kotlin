@@ -15,7 +15,7 @@
         android:layout_width="@dimen/dp_200"
         android:layout_height="@dimen/dp_250"
         android:onClick="@{(view)->TypeInfoFragmentClick.itemClick(view.tag)}"
-        >
+       >
 
         <ImageView
             android:id="@+id/iv_type_info_list_img"
@@ -23,7 +23,8 @@
             android:layout_height="@dimen/dp_140"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dp_10"
-            bind:imageUrl="@{vmTypeInfoItem.list_pic_url}"/>
+            bind:imageUrl="@{vmTypeInfoItem.list_pic_url}"
+           />
 
         <TextView
             android:id="@+id/tv_type_info_list_name"
