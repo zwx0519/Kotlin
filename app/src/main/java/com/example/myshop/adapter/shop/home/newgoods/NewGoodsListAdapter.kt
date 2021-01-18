@@ -29,4 +29,8 @@ class NewGoodsListAdapter (
         list = lt
         notifyDataSetChanged()
     }
+
+    override fun bindIndex(position: Int) {
+    }
+
 }

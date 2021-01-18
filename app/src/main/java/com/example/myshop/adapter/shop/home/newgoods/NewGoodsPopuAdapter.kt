@@ -25,6 +25,10 @@ class NewGoodsPopuAdapter (
         binding.setVariable(BR.newgoods_popuClick,click)
     }
 
+    override fun bindIndex(position: Int) {
+    }
+
+
     fun refreshData(lt : List<FilterCategory>){
         list = lt
         notifyDataSetChanged()

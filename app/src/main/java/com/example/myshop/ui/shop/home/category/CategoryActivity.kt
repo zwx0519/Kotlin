@@ -1,6 +1,9 @@
 package com.example.myshop.ui.shop.home.category
 
 import android.content.Context
+import android.database.Cursor
+import android.net.Uri
+import android.provider.MediaStore
 import android.util.Log
 import android.util.SparseArray
 import android.view.LayoutInflater
@@ -28,6 +31,7 @@ import com.example.myshop.base.IItemClick
 import com.example.myshop.databinding.ActivityCategoryBinding
 import com.example.myshop.model.bean.shop.home.category.CategoryBean
 import com.example.myshop.model.bean.shop.home.category.Goods
+import com.example.myshop.utils.BitmapUtils
 import com.example.myshop.viewmodel.shop.home.category.CategoryViewModel
 import com.github.chrisbanes.photoview.PhotoView
 import com.shop.base.BaseActivity
@@ -226,7 +230,6 @@ class CategoryActivity(var lid: Int = R.layout.activity_category) :
     inner class BigImageClick : IItemClick<String> {
         override fun itemClick(data: String?) {
             currentPos = SpUtils.instance!!.getInt("category_image")
-            Log.e("TAG","下标"+currentPos)
             countPos = currentPos
             initPopu()
         }
@@ -258,15 +261,13 @@ class CategoryActivity(var lid: Int = R.layout.activity_category) :
         tv_return.setOnClickListener {
             popupWindow!!.dismiss()//关闭弹窗
         }
+
         //当ViewPager滑动时
         mVp.addOnPageChangeListener(object : OnPageChangeListener {
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
-                positionOffsetPixels: Int
-            ) {
-
-            }
+                positionOffsetPixels: Int) {}
 
             override fun onPageSelected(position: Int) { //停止时
                 currentPos = position
@@ -308,9 +309,14 @@ class CategoryActivity(var lid: Int = R.layout.activity_category) :
 
             override fun instantiateItem(container: ViewGroup, position: Int): Any {
                 val photoView = PhotoView(this@CategoryActivity)
+                var imgpath =listUrl.get(position)
+//                var img=BitmapUtils().getScaleBitmap(imgpath!!,160,160)
+//                //Bitmap转uri
+//                val uri = Uri.parse(MediaStore.Images.Media.insertImage(contentResolver, img, null, null))
+//                //uri转字符串
+//                val path = getRealPathFromUri(this@CategoryActivity, uri)
 
-                Glide.with(this@CategoryActivity).load(listUrl.get(position))
-                    .apply(RequestOptions.bitmapTransform(RoundedCorners(20))).into(photoView)
+                Glide.with(this@CategoryActivity).load(imgpath).apply(RequestOptions.bitmapTransform(RoundedCorners(20))).into(photoView)
                 container.addView(photoView) //添加进入视图
                 return photoView
             }
@@ -321,6 +327,25 @@ class CategoryActivity(var lid: Int = R.layout.activity_category) :
         }
 
         mVp.setCurrentItem(currentPos!!) //通过下标来改变集合里面的ViewPager的页面
+    }
+
+
+    //TODO uri转字符串的方法
+    fun getRealPathFromUri(
+        context: Context,
+        contentUri: Uri?
+    ): String? {
+        var cursor: Cursor? = null
+        return try {
+            val proj =
+                arrayOf(MediaStore.Images.Media.DATA)
+            cursor = context.contentResolver.query(contentUri!!, proj, null, null, null)
+            val column_index = cursor!!.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+            cursor.moveToFirst()
+            cursor.getString(column_index)
+        } finally {
+            cursor?.close()
+        }
     }
 
     //TODO 更换下标

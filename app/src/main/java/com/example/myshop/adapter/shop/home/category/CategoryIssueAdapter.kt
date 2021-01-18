@@ -28,4 +28,8 @@ class CategoryIssueAdapter(
         list = lt
         notifyDataSetChanged()
     }
+
+    override fun bindIndex(position: Int) {
+    }
+
 }

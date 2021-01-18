@@ -13,14 +13,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="@{(view)->Categoy_bigimageClick.itemClick(view.tag)}"
-        >
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/iv_bigimage_img"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_260"
-            android:scaleType="fitXY" />
+            android:layout_height="@dimen/dp_200"
+            android:scaleType="fitXY"
+            android:onClick="@{(view)->Categoy_bigimageClick.itemClick(view.tag)}"/>
     </LinearLayout>
 </layout>

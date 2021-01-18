@@ -89,9 +89,14 @@ class SystemRepository {
         serviceApi.getChannelType(category)
     }
 
-    //TODO 分类Vager列表数据
+    //TODO 分类Vage列表数据
     suspend fun getChannelTypeInfo(category:Int) = withContext(Dispatchers.IO) {
         serviceApi.getChannelTypeInfo(category)
+    }
+
+    //TODO 购物车列表数据
+    suspend fun getShoppingCar() = withContext(Dispatchers.IO) {
+        serviceApi.getShoppingCar()
     }
 
     //TODO 获取多布局数据

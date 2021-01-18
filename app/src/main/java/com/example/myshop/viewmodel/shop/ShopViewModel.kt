@@ -3,7 +3,7 @@ package com.example.myshop.viewmodel.shop
 import androidx.fragment.app.Fragment
 import com.example.myshop.ui.shop.home.HomeFragment
 import com.example.myshop.ui.shop.me.MeFragment
-import com.example.myshop.ui.shop.shoppingcart.ShoppingCartFragment
+import com.example.myshop.ui.shop.shoppingcart.ShoppingCarFragment
 import com.example.myshop.ui.shop.special.SpecialFragment
 import com.example.myshop.ui.shop.type.TypeFragment
 import com.shop.base.BaseViewModel
@@ -17,7 +17,7 @@ class ShopViewModel :BaseViewModel(Injection.repository){
         fragments.add(HomeFragment.instance)
         fragments.add(SpecialFragment.instance)
         fragments.add(TypeFragment.instance)
-        fragments.add(ShoppingCartFragment.instance)
+        fragments.add(ShoppingCarFragment.instance)
         fragments.add(MeFragment.instance)
     }
 }

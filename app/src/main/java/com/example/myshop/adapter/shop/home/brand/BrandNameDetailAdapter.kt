@@ -29,4 +29,7 @@ class BrandNameDetailAdapter(
         list = lt
         notifyDataSetChanged()
     }
+
+    override fun bindIndex(position: Int) {
+    }
 }

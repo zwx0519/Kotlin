@@ -48,6 +48,8 @@ class More_ViewAdapter(
         }
 
     }
+    override fun bindIndex(position: Int) {
+    }
 
     //刷新加载数据
     fun refreshData(lt : List<Stu>){

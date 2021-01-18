@@ -29,4 +29,7 @@ class CategoryButtomInfoAdapter(
         list = lt
         notifyDataSetChanged()
     }
+
+    override fun bindIndex(position: Int) {
+    }
 }

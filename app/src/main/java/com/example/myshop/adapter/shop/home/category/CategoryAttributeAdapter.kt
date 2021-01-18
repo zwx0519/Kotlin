@@ -30,5 +30,6 @@ class CategoryAttributeAdapter(
         notifyDataSetChanged()
     }
 
-
+    override fun bindIndex(position: Int) {
+    }
 }

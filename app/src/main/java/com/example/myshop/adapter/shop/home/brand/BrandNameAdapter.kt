@@ -22,4 +22,7 @@ class BrandNameAdapter (context: Context, list: List<DataX>, layouts: SparseArra
         list = lt
         notifyDataSetChanged()
     }
+
+    override fun bindIndex(position: Int) {
+    }
 }

@@ -6,10 +6,12 @@ import com.example.myshop.model.bean.shop.home.brand.BrandNameDetailBean
 import com.example.myshop.model.bean.shop.home.brand.BrandNameDetailListBean
 import com.example.myshop.model.bean.shop.home.category.CategoryBean
 import com.example.myshop.model.bean.shop.home.category.CategoryBottomInfoBean
-import com.example.myshop.model.bean.shop.home.channel.ChannelBean
-import com.example.myshop.model.bean.shop.home.channel.ChannelTypeBean
 import com.example.myshop.model.bean.shop.home.newgoods.NewGoodsBean
 import com.example.myshop.model.bean.shop.home.newgoods.NewGoodsListBean
+import com.example.myshop.model.bean.shop.shoppingcar.AddShoppingCarBean
+import com.example.myshop.model.bean.shop.shoppingcar.DeleteShoppingCarBean
+import com.example.myshop.model.bean.shop.shoppingcar.ShoppingCarBean
+import com.example.myshop.model.bean.shop.shoppingcar.UpdateShoppingCarBean
 import com.example.myshop.model.bean.shop.special.SpecialBean
 import com.example.myshop.model.bean.shop.type.TypeBean
 import com.example.myshop.model.bean.shop.type.TypeInfoBean
@@ -17,11 +19,7 @@ import com.example.myshop.model.bean.shop.type.TypeInfoButtomBean
 import com.example.myshop.model.bean.shop.type.TypeInfoTopBean
 import com.example.myshop.model.bean.test.more_view.More_ViewBean
 import com.shop.net.BaseResp
-import io.reactivex.Flowable
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
-import retrofit2.http.QueryMap
+import retrofit2.http.*
 import java.util.*
 
 interface ServiceApi {
@@ -80,6 +78,25 @@ interface ServiceApi {
     //分类右边数据点击详情rlv
     @GET("goods/list?page=1&size=100")
     suspend fun getChannelTypeInfo(@Query("categoryId") id: Int): BaseResp<TypeInfoButtomBean>
+
+    //添加到购物车
+    @POST("cart/add")
+    @FormUrlEncoded
+    suspend fun postAddShoppingCar(@FieldMap map: HashMap<String?, String?>?): BaseResp<AddShoppingCarBean>
+
+    //更新购物车的数据
+    @POST("cart/update") //  goodsId=1035006 number=1   productId=47     // 1116033   1   171
+    @FormUrlEncoded
+    suspend fun postUpdateShoppingCar(@FieldMap map: Map<String?, String?>?): BaseResp<UpdateShoppingCarBean>
+
+    //删除购物车数据
+    @POST("cart/delete")
+    @FormUrlEncoded
+    suspend  fun postDeleteShoppingCar(@Field("productIds") productIds: String?): BaseResp<DeleteShoppingCarBean>
+
+    //购物车列表
+    @GET("cart/index")
+    suspend fun getShoppingCar(): BaseResp<ShoppingCarBean>
 
     //多布局的接口
     @GET("discover/hot.json")

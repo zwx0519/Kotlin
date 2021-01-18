@@ -21,7 +21,10 @@ class TypeInfoListAdapter(
     }
 
     override fun bindData(binding: ViewDataBinding, data: DataX, layId: Int) {
-        binding.setVariable(BR.vmtypeinfoListClick,click)
+        binding.setVariable(BR.TypeInfoFragmentClick,click)
+    }
+
+    override fun bindIndex(position: Int) {
     }
 
     //刷新适配器

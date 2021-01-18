@@ -31,22 +31,27 @@ open abstract class BaseAdapter<D>
         holder.dataBinding.root.setOnClickListener {
             if(itemClick != null){
                 itemClick.itemClick(list.get(position))
+                bindIndex(position)
             }
         }
         bindData(holder.dataBinding,list.get(position),layoutId)
     }
 
-
+    //TODO 集合长度
     override fun getItemCount(): Int {
         return list.size
     }
 
+    //TODO 多布局
     override fun getItemViewType(position: Int): Int {
         return layoutId(position)
     }
 
     //TODO 获取对应的布局（多布局）
     protected abstract fun layoutId(position: Int): Int
+
+    //TODO 获取对应的下标
+    protected  abstract fun bindIndex(position: Int)
 
     //TODO 视图和集合
     protected abstract fun bindData(binding: ViewDataBinding, data: D, layId: Int)

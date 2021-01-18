@@ -26,6 +26,8 @@ class TypeInfoAdapter (context: Context,
     override fun bindData(binding: ViewDataBinding, data: TypeInfoBean.SubCategory, layId: Int) {
         binding.setVariable(BR.vmtypeinfoListClick,click)
     }
+    override fun bindIndex(position: Int) {
+    }
 
     //刷新适配器
     fun refreshData(lt: List<TypeInfoBean.SubCategory>){
