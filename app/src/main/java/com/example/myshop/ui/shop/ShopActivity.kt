@@ -1,5 +1,7 @@
 package com.example.myshop.ui.shop
 
+import android.view.View
+import android.widget.CompoundButton
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
@@ -96,4 +98,5 @@ class ShopActivity : BaseActivity<ShopViewModel,ActivityShopBinding>
         }
 
     }
+
 }

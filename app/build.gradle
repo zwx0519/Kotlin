@@ -101,7 +101,7 @@ dependencies {
     //网络请求cookie缓存
     implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
 
-    //PhotoView
+    //PhotoView  图片缩放
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
 
     //刷新框架
@@ -135,6 +135,7 @@ dependencies {
     //跑马灯
     implementation 'com.xj.marqueeView:marqueeView:0.1.20'
 
-    //图片缩放
-    implementation 'com.github.chrisbanes:PhotoView:2.0.0'
+    //oss 阿里云
+    implementation 'com.aliyun.dpa:oss-android-sdk:2.5.0'
+
 }

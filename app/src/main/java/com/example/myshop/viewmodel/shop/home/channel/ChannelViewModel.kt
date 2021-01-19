@@ -32,7 +32,7 @@ class ChannelViewModel : ViewModel() {
     }
 
     suspend fun loadData(){
-        val url = SpUtils.instance!!.getStrring("home_url")
+        val url = SpUtils.instance!!.getString("home_url")
         var homechanneltypeData = get("https://cdplay.cn/api/catalog/index?mur="+url)
         if(homechanneltypeData != null){
             category.postValue(homechanneltypeData.data.categoryList)

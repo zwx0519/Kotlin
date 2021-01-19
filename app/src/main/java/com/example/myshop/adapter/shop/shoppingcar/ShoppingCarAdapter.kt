@@ -5,11 +5,11 @@ import android.util.SparseArray
 import android.view.View
 import android.widget.CompoundButton
 import androidx.databinding.ViewDataBinding
-import com.example.myshop.BR
 import com.example.myshop.R
 import com.example.myshop.base.BaseAdapter
 import com.example.myshop.base.IItemClick
 import com.example.myshop.model.bean.shop.shoppingcar.ShoppingCarBean
+import com.example.myshop.model.bean.shop.special.Data
 import com.example.myshop.utils.NumberSelect
 import kotlinx.android.synthetic.main.layout_shopping_item.view.*
 
@@ -17,11 +17,11 @@ class ShoppingCarAdapter(
     context: Context,
     list: List<ShoppingCarBean.Cart>,
     layouts: SparseArray<Int>,
-    var click: IItemClick<ShoppingCarBean.Cart>
+    click: IItemClick<ShoppingCarBean.Cart>
 ) : BaseAdapter<ShoppingCarBean.Cart>(context, list, layouts, click) {
 
     //是否是编辑状态
-    private val isEdit = false
+    private var isEdit = false
 
     //是否修改条目
     private var updateItem: UpdateItem? = null
@@ -69,10 +69,10 @@ class ShoppingCarAdapter(
         })
 
         binding.root.cb_shopping_car_select.setTag(data.id)
-        binding.setVariable(BR.vmShopping_Cart_itemClick, click)
+//        binding.setVariable(BR.vmShopping_Cart_itemClick, click)
 
-        binding.root.cb_shopping_car_select.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener {
-                buttonView, isChecked ->
+        binding.root.cb_shopping_car_select.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+            @Override
             fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
                 if (iItemViewClick != null) {
                     val id = buttonView.tag as Int
@@ -80,6 +80,11 @@ class ShoppingCarAdapter(
                 }
             }
         })
+
+    }
+
+    fun setEditState(bool: Boolean) {
+        isEdit = bool
     }
 
     //修改条目
@@ -91,5 +96,13 @@ class ShoppingCarAdapter(
     interface IItemViewClick {
         //条目中的元素点击
         fun itemViewClick(viewid: Int, data: Boolean)
+    }
+
+    /**
+     * 加载完数据刷新到界面的data
+     */
+    fun refreshData(lt:List<ShoppingCarBean.Cart>){
+        list = lt
+        notifyDataSetChanged()
     }
 }

@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.shop.type.TypeInfoActivity"></activity>
+        <activity android:name=".ui.shop.me.login.MeRegisterActivity"></activity>
+        <activity android:name=".ui.shop.me.userinfo.UserInfoActivity" />
+        <activity android:name=".ui.shop.me.login.MeLoginActivity" />
+        <activity android:name=".ui.shop.type.TypeInfoActivity" />
         <activity android:name=".ui.shop.home.category.CategoryActivity" />
         <activity android:name=".test.more_view.More_ViewActivity" />
         <activity android:name=".ui.shop.ShopActivity" />

@@ -7,17 +7,6 @@ class SpUtils {
 
     private val sp = MyApp.instance!!.getSharedPreferences("chat", Context.MODE_PRIVATE)
 
-    fun getInstance(): SpUtils? {
-        if (instance == null) {
-            synchronized(SpUtils::class.java) {
-                if (instance == null) {
-                    instance = SpUtils()
-                }
-            }
-        }
-        return instance
-    }
-
     /**
      * 设置数据
      * @param key
@@ -44,7 +33,7 @@ class SpUtils {
         editor.commit()
     }
 
-    fun getStrring(key: String?):String?{
+    fun getString(key: String?):String?{
         return sp!!.getString(key,"")
     }
 
@@ -73,7 +62,7 @@ class SpUtils {
     }
 
     companion object{
-        var instance:SpUtils? = null
+        var instance: SpUtils? = null
             get() {
                 if(field == null){
                     synchronized(SpUtils::class.java){
@@ -84,9 +73,7 @@ class SpUtils {
                 }
                 return field
             }
-        private set
+            private set
     }
-
-
 
 }

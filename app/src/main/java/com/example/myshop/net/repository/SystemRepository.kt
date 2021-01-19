@@ -103,4 +103,26 @@ class SystemRepository {
     suspend fun getMore() = withContext(Dispatchers.IO) {
         serviceApi.getMore()
     }
+
+    /**
+     * 登录
+     */
+    suspend fun MeLogin(username:String,password:String) = withContext(Dispatchers.IO){
+        serviceApi.MeLogin(username,password)
+    }
+
+    /**
+     * 注册
+     */
+    suspend fun MeRegist(username:String,password:String) = withContext(Dispatchers.IO){
+        serviceApi.MeRegist(username,password)
+    }
+
+    /**
+     * 用户信息更新
+     */
+    suspend fun MeUserInfo(map: HashMap<String, String>) = withContext(Dispatchers.IO){
+        serviceApi.MeUserInfo(map)
+    }
+
 }

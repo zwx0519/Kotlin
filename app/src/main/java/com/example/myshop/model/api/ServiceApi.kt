@@ -1,5 +1,7 @@
 package com.example.myshop.model.api
 
+import com.example.basemvvm.model.bean.me.MeLoginBean
+import com.example.basemvvm.model.bean.me.MeRegisterBean
 import com.example.myshop.model.bean.shop.home.HomeBean
 import com.example.myshop.model.bean.shop.home.brand.BrandNameBean
 import com.example.myshop.model.bean.shop.home.brand.BrandNameDetailBean
@@ -8,6 +10,7 @@ import com.example.myshop.model.bean.shop.home.category.CategoryBean
 import com.example.myshop.model.bean.shop.home.category.CategoryBottomInfoBean
 import com.example.myshop.model.bean.shop.home.newgoods.NewGoodsBean
 import com.example.myshop.model.bean.shop.home.newgoods.NewGoodsListBean
+import com.example.myshop.model.bean.shop.me.login.MeUserInfoBean
 import com.example.myshop.model.bean.shop.shoppingcar.AddShoppingCarBean
 import com.example.myshop.model.bean.shop.shoppingcar.DeleteShoppingCarBean
 import com.example.myshop.model.bean.shop.shoppingcar.ShoppingCarBean
@@ -101,4 +104,20 @@ interface ServiceApi {
     //多布局的接口
     @GET("discover/hot.json")
     suspend fun getMore(): More_ViewBean
+
+    //登录接口
+    @POST("auth/login")
+    @FormUrlEncoded
+    suspend fun MeLogin(@Field("username")username:String,@Field("password")password:String):BaseResp<MeLoginBean>
+
+    //注册接口
+    @POST("auth/register")
+    @FormUrlEncoded
+    suspend fun MeRegist(@Field("username")username:String,@Field("password")password:String):BaseResp<MeRegisterBean>
+
+    //用户信息更新
+    @POST("/user/updateUserInfo")
+    @FormUrlEncoded
+    suspend fun MeUserInfo(@FieldMap map: HashMap<String, String>):BaseResp<MeUserInfoBean>
+
 }
