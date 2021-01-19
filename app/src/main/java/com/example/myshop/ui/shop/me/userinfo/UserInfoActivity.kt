@@ -26,8 +26,6 @@ class UserInfoActivity : BaseActivity<MeUserInfoViewModel, ActivityUserInfoBindi
 
     override fun initView() {
         initClick()
-
-
         var sp_username = SpUtils.instance!!.getString("username")     //名称
         var sp_nickname = SpUtils.instance!!.getString("nickname")     //昵称
         var sp_birthday = SpUtils.instance!!.getString("birthday")     //生日

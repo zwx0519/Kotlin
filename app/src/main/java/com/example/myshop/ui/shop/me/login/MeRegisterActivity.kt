@@ -31,7 +31,7 @@ class MeRegisterActivity (var lid: Int = R.layout.activity_me_register): BaseAct
         iv_register_code_img!!.setImageBitmap(bitmap)
     }
 
-
+    //TODO 点击事件
     fun initClick(){
         mDataBinding!!.ivRegisterCodeImg.setOnClickListener(this)
         mDataBinding!!.btnRegister.setOnClickListener(this)
@@ -53,7 +53,6 @@ class MeRegisterActivity (var lid: Int = R.layout.activity_me_register): BaseAct
                     intent.putExtra("password",pw)
                     setResult(100,intent)
                     finish()
-
                 }
             }
         })
@@ -67,6 +66,7 @@ class MeRegisterActivity (var lid: Int = R.layout.activity_me_register): BaseAct
 
     }
 
+    //TODO 点击监听
     override fun onClick(v: View?) {
         when(v?.id){
             R.id.iv_register_code_img -> {        //验证码
@@ -78,16 +78,17 @@ class MeRegisterActivity (var lid: Int = R.layout.activity_me_register): BaseAct
         }
     }
 
+    //TODO 注册相关的逻辑代码
     private fun initRegist() {
         username = et_register_name!!.text.toString()
         pw = et_register_pw!!.text.toString()
-        val pw2 = et_register_repwd!!.text.toString()
+        val Repwd = et_register_repwd!!.text.toString()
         val ver = et_register_code!!.text.toString()
 
         //判断不能为空
-        if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(pw) && !TextUtils.isEmpty(pw2)) {
+        if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(pw) && !TextUtils.isEmpty(Repwd)) {
             //密码和确认密码必须一致
-            if (pw == pw2) {
+            if (pw == Repwd) {
                 //密码大于6位
                 if (pw.length >= 6) {
                     //验证码不能为空
@@ -121,19 +122,9 @@ class MeRegisterActivity (var lid: Int = R.layout.activity_me_register): BaseAct
             return
         }else{
             //没有存入的
-            //注册方法
-            zhuce(username!!,pw)
+            //1.注册
+            //2.将用户名最为key 密钥（token）作为value 存入sp (sp.....set)
+            mViewModel.MeRegister(username,pw)
         }
     }
-
-    //TODO 注册
-    private fun zhuce(username: String, pw: String) {
-        /**
-         * 1.注册
-         * 2.将用户名最为key 密钥（token）作为value 存入sp (sp.....set)
-         */
-        mViewModel.MeRegister(username,pw)
-    }
-
-
 }
