@@ -69,7 +69,7 @@ class ShoppingCarAdapter(
             //设置自定义数量选择器的布局
             numberSelect.addPage(R.layout.layout_number_change)
             //设置数量变化的点击操作
-            numberSelect.addChangeNumber {
+            numberSelect.addChangeNumber {it->
                 //修改后的商品的数量
                 data.number= it
             }
