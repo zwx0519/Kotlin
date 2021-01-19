@@ -3,11 +3,15 @@ package com.example.myshop.adapter.shop.shoppingcar
 import android.content.Context
 import android.util.SparseArray
 import android.view.View
+import android.widget.CheckBox
 import android.widget.CompoundButton
+import android.widget.TextView
 import androidx.databinding.ViewDataBinding
+import com.example.myshop.BR
 import com.example.myshop.R
 import com.example.myshop.base.BaseAdapter
 import com.example.myshop.base.IItemClick
+import com.example.myshop.ext.findView
 import com.example.myshop.model.bean.shop.shoppingcar.ShoppingCarBean
 import com.example.myshop.model.bean.shop.special.Data
 import com.example.myshop.utils.NumberSelect
@@ -17,24 +21,22 @@ class ShoppingCarAdapter(
     context: Context,
     list: List<ShoppingCarBean.Cart>,
     layouts: SparseArray<Int>,
-    click: IItemClick<ShoppingCarBean.Cart>
+   var click: IItemClick<ShoppingCarBean.Cart>
 ) : BaseAdapter<ShoppingCarBean.Cart>(context, list, layouts, click) {
 
     //是否是编辑状态
-    private var isEdit = false
+    var isEditor:Boolean = false
 
     //是否修改条目
     private var updateItem: UpdateItem? = null
-
     fun setUpdateItem(item: UpdateItem?) {
         updateItem = item
     }
 
-    private var iItemViewClick: IItemViewClick? = null
-
-    //接口回调 给条目元素按钮点击
-    fun addItemViewClick(click: IItemViewClick?) {
-        iItemViewClick = click!!
+    //条目监听
+    private lateinit var changeEvt:ChangeEvt
+    fun addChangeEvt(changeEvt: ChangeEvt){
+        this.changeEvt = changeEvt
     }
 
     override fun layoutId(position: Int): Int {
@@ -48,43 +50,51 @@ class ShoppingCarAdapter(
 
     override fun bindData(binding: ViewDataBinding, data: ShoppingCarBean.Cart, layId: Int) {
 
-        //进行显示隐藏
-        binding.root.tv_shopping_car_item_name.setVisibility(if (isEdit) View.GONE else View.VISIBLE)
-        binding.root.tv_shopping_car_item_count.setVisibility(if (isEdit) View.GONE else View.VISIBLE)
-        binding.root.tv_shopping_car_item_title.setVisibility(if (isEdit) View.VISIBLE else View.GONE)
-        binding.root.layout_change.setVisibility(if (isEdit) View.VISIBLE else View.GONE)
+        var checkbox = binding.root.findViewById<CheckBox>(R.id.cb_shopping_car_select)
 
-        val selectOrder = data.selectOrder
-        val selectEdit = data.selectEdit
-        // 设置选中状态
-        binding.root.cb_shopping_car_select.setChecked(if (isEdit) selectEdit else selectOrder)
+        var txtName = binding.root.findViewById<TextView>(R.id.tv_shopping_car_item_name)
+        var txtNumber = binding.root.findViewById<TextView>(R.id.tv_shopping_car_item_count)
 
-        binding.root.layout_change.addPage(R.layout.layout_number_change)
-        binding.root.layout_change.addChangeNumber(object : NumberSelect.ChangeNumber {
-            override fun change(number1: Int) {
-                //修改本地数据得值
-                data.copy(data.number, number1)
-                updateItem?.updateItemDate(data)
+        var txtEditTitle = binding.root.findViewById<TextView>(R.id.tv_shopping_car_item_price)
+        var numberSelect = binding.root.findViewById<NumberSelect>(R.id.layout_change)
+
+        //绑定界面的数据对象
+        if(isEditor){
+            txtName.visibility = View.GONE
+            txtNumber.visibility = View.GONE
+            txtEditTitle.visibility = View.VISIBLE
+            numberSelect.visibility = View.VISIBLE
+
+            checkbox.isChecked = data.selectEdit
+            //设置自定义数量选择器的布局
+            numberSelect.addPage(R.layout.layout_number_change)
+            //设置数量变化的点击操作
+            numberSelect.addChangeNumber {
+                //修改后的商品的数量
+                data.number= it
             }
-        })
+        }else{
+            txtName.visibility = View.VISIBLE
+            txtNumber.visibility = View.VISIBLE
+            txtEditTitle.visibility = View.GONE
+            numberSelect.visibility = View.GONE
+            checkbox.isChecked = data.selectOrder
+        }
+        txtNumber.setText("X"+data.number.toString())
+        numberSelect.number = data.number
 
-        binding.root.cb_shopping_car_select.setTag(data.id)
-//        binding.setVariable(BR.vmShopping_Cart_itemClick, click)
-
-        binding.root.cb_shopping_car_select.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
-            @Override
-            fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
-                if (iItemViewClick != null) {
-                    val id = buttonView.tag as Int
-                    iItemViewClick!!.itemViewClick(id, isChecked) //接口回调
-                }
+        checkbox.setOnClickListener {
+            if(isEditor){
+                data.selectEdit = checkbox.isChecked
+            }else{
+                data.selectOrder = checkbox.isChecked
             }
-        })
+            if(changeEvt != null){
+                changeEvt.click()
+            }
+        }
 
-    }
-
-    fun setEditState(bool: Boolean) {
-        isEdit = bool
+        //binding.setVariable(BR.vmShopping_Cart_itemClick, click)
     }
 
     //修改条目
@@ -92,17 +102,8 @@ class ShoppingCarAdapter(
         fun updateItemDate(data: ShoppingCarBean.Cart?)
     }
 
-    //接口回调 给条目元素点击
-    interface IItemViewClick {
-        //条目中的元素点击
-        fun itemViewClick(viewid: Int, data: Boolean)
-    }
-
-    /**
-     * 加载完数据刷新到界面的data
-     */
-    fun refreshData(lt:List<ShoppingCarBean.Cart>){
-        list = lt
-        notifyDataSetChanged()
+    //点击事件
+    interface ChangeEvt{
+        fun click()
     }
 }

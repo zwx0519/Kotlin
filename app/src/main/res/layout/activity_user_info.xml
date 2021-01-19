@@ -146,7 +146,8 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/dp_80">
+                android:layout_height="@dimen/dp_80"
+                android:id="@+id/layout_nickname">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -159,7 +160,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_UserInfo_username"
+                    android:id="@+id/tv_UserInfo_nickname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/dp_30"
@@ -187,7 +188,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layout_nickname"
+                android:id="@+id/layout_mark"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/dp_80">
 
@@ -195,14 +196,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:text="昵称"
+                    android:text="签名"
                     android:textSize="@dimen/sp_20"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/tv_UserInfo_nickname"
+                    android:id="@+id/tv_UserInfo_mark"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/dp_30"

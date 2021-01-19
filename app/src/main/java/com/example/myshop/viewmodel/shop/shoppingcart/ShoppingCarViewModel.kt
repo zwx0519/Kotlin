@@ -24,4 +24,60 @@ class ShoppingCarViewModel : BaseViewModel(Injection.repository){
             }
         }
     }
+
+    //TODo 默认状态下的商品数据选中状态
+    fun updateCarStateNormal(boolean: Boolean){
+        var list = ShoppingCar.value!!
+        for(i in 0 until list.size){
+            list.get(i).selectOrder= boolean
+        }
+    }
+
+    //TODO  编辑状态下的商品数据选中状态
+    fun updateCarStateEidtor(boolean: Boolean){
+        var list =  ShoppingCar.value!!
+        for(i in 0 until list.size){
+            list.get(i).selectEdit = boolean
+        }
+    }
+
+    //TODO 计算当前购物车的总价和总数量
+    fun getCarTotalNormal():IntArray{
+        var arr:IntArray = intArrayOf(0,0,0)
+        var num=0 //总数量
+        var price = 0 //总价
+        var select = 0 //0全选 1非全选
+        var list = ShoppingCar.value!!
+        for(i in 0 until list.size){
+            if(list.get(i).selectOrder){
+                num += list.get(i).number
+                price += list.get(i).number * Integer.valueOf(list.get(i).retail_price)
+            }else{
+                if(select == 0){
+                    select = 1
+                }
+            }
+        }
+        arr[0] = num
+        arr[1] = price
+        arr[2] = select
+        return arr
+    }
+
+    //TODO 编辑状态下的计算
+    fun getCarTotalEidt():Array<Int>{
+        var arr = arrayOf<Int>()
+        var num=0
+        var price = 0
+        var list = ShoppingCar.value!!
+        for(i in 0 until list.size){
+            if(list.get(i).selectOrder){
+                num += list.get(i).number
+                price += list.get(i).number*Integer.valueOf(list.get(i).retail_price)
+            }
+        }
+        arr[0] = num
+        arr[1] = price
+        return arr
+    }
 }

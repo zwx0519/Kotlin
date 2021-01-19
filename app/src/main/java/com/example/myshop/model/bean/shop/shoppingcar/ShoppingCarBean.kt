@@ -24,7 +24,7 @@ data class ShoppingCarBean(
         val id: Int,
         val list_pic_url: String,
         val market_price: String,
-        val number: Int,
+        var number: Int,
         val product_id: Int,
         val retail_price: String,
         val session_id: String,

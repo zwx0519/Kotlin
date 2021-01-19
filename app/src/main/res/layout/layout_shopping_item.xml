@@ -10,13 +10,12 @@
             type="com.example.myshop.model.bean.shop.shoppingcar.ShoppingCarBean.Cart"/>
         <variable
             name="vmShopping_Cart_itemClick"
-            type="com.example.myshop.base.IItemClick" />
+            type="com.example.myshop.ui.shop.shoppingcart.ShoppingCarFragment.ClickEvt" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="@{(view)->vmShopping_Cart_itemClick.itemClick(view.tag)}">
+        android:layout_height="wrap_content">
 
         <CheckBox
             android:id="@+id/cb_shopping_car_select"
@@ -26,6 +25,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginLeft="@dimen/dp_10"
+            android:onClick="@{(view)->vmShopping_Cart_itemClick.itemCheckboxClick(view)}"
            />
 
         <ImageView
