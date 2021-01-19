@@ -19,13 +19,6 @@ class UserInfoActivity : BaseActivity<MeUserInfoViewModel, ActivityUserInfoBindi
     R.layout.activity_user_info,
     MeUserInfoViewModel::class.java
 ), View.OnClickListener {
-
-//    var bucketName = "2002a-zwx"
-//    var ossPoint = "http://oss-cn-beijing.aliyuncs.com"
-//
-//    var key = "LTAI4G1mVFsHAVqFkDdL6DPT" //appkey
-//    var secret = "vkIBnNuNpCyIhYb2wmD4rOX2ByVx7a" //密码
-
     //private val ossClient: OSS? = null
 
     var nickname_1: String? = null
